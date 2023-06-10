@@ -1,11 +1,13 @@
 import React from "react";
+import { Container, ButtonArea } from "./styles";
+import { BackButton } from "../../Components/backButon";
 
-import * as S from "./styles";
-
-export const Home: React.FC = () => {
+export const ViewCallRequest: React.FC = () => {
   return (
-    <S.Container>
-      <S.Title> Fazer aqui a tela de visualizar chamados aqui. </S.Title>
-    </S.Container>
+    <Container>
+      <ButtonArea>
+        <BackButton />
+      </ButtonArea>
+    </Container>
   );
 };

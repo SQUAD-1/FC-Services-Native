@@ -1,5 +1,5 @@
-import { Home } from "./src/pages/Home";
+import { ViewCallRequest } from "./src/pages/ViewCallRequest";
 
 export default function App() {
-  return <Home />;
+  return <ViewCallRequest />;
 }
