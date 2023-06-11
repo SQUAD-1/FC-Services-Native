@@ -2,6 +2,7 @@ import { ViewCallRequest } from "./src/pages/ViewCallRequest";
 import { ThemeProvider } from 'styled-components/native';
 import { useFonts } from 'expo-font';
 import { useEffect } from 'react';
+import { Router } from "./router";
 
 export default function App() {
   useEffect(() => {
@@ -24,7 +25,7 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <ViewCallRequest />
+      <Router />
     </ThemeProvider>
   );
 }

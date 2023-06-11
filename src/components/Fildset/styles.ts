@@ -6,8 +6,7 @@ border-radius: 4px;
 padding: 8px 0px 8px 16px;
 width:100%;
 white-space: nowrap;
-display: flex;
-justify-content:center;
+display: grid;
 align-self: center;
 `;
 

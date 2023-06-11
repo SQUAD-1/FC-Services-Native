@@ -1,6 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { ViewCallRequest } from "./src/pages/ViewCallRequest";
+import { OpenCallRequest } from "./src/pages/OpenCallRequest";
 
 export const Router = () => {
     const Stack = createNativeStackNavigator();
@@ -8,7 +9,12 @@ export const Router = () => {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen
-            name="/"
+            name="Abrir Chamado"
+            component={OpenCallRequest}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Chamado"
             component={ViewCallRequest}
             options={{ headerShown: false }}
           />

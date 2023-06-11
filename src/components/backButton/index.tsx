@@ -1,18 +1,17 @@
-import React from "react";
 import { BackButtonIcon } from "../../assets/backButtonIcon";
-import {Back, ContainerBackButton, TextIconWrapper } from "./styles";
+import { Back, ContainerBackButton, TextIconWrapper } from "./styles";
 
-interface BackButtonProps{
+interface BackButtonProps {
   buttonText: string;
-  buttonClick: () => void
+  buttonClick: () => void;
 }
 
-export const BackButton: React.FC<BackButtonProps> = ({buttonText, buttonClick }): JSX.Element => {
+export const BackButton = ({ buttonText, buttonClick }: BackButtonProps) => {
   return (
-  <ContainerBackButton>
-    <TextIconWrapper onPress={buttonClick}>
-      <BackButtonIcon/> <Back>{buttonText}</Back>
-    </TextIconWrapper>
-  </ContainerBackButton>
+    <ContainerBackButton>
+      <TextIconWrapper onPress={buttonClick}>
+        <BackButtonIcon /> <Back>{buttonText}</Back>
+      </TextIconWrapper>
+    </ContainerBackButton>
   );
 };
