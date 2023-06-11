@@ -1,11 +1,10 @@
 import React from "react";
-
-import * as S from "./styles";
+import { OpenCallContainer, OpenCallTitle } from "./styles";
 
 export const Home: React.FC = () => {
   return (
-    <S.Container>
-      <S.Title> Fazer tela de abrir chamado aqui </S.Title>
-    </S.Container>
+    <OpenCallContainer>
+      <OpenCallTitle> Fazer tela de abrir chamado aqui </OpenCallTitle>
+    </OpenCallContainer>
   );
 };
