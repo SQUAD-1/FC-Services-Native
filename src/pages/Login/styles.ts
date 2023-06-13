@@ -7,12 +7,12 @@ display: flex;
 align-items: center;
 padding: 20px;
 gap: 50px;
+justify-content: space-between;
 `
 
 export const Logo = styled.View`
  width: 100%;
- height: 200px;
- background-color: green;
+ height: 150px;
  display: flex;
  justify-content: center;
  align-items: center;
@@ -35,8 +35,9 @@ export const InputContainer = styled.View `
  `
 
 export const TwoInput = styled.View`
-width: 100%;
-gap: 10px
+    width: 100%;
+    gap: 10px;
+    
 `
 
 export const TextLogin = styled.Text`
@@ -53,6 +54,7 @@ export const TextLogin = styled.Text`
     height: 50px;
     display: flex;
     background-color: rgb(229, 230, 230);
+   /* margin-left: -50px; */
 
     align-items: center;
    
@@ -107,5 +109,20 @@ justify-content: end;
 color: rgb(43, 108, 1);
 font-size: 16px;
 font-weight: 500;
+
+`
+
+export const ContainerImputs = styled.View`
+display: flex;
+flex-direction: row;
+position: relative;
+align-items: center;
+
+`
+
+export const IconSpace = styled.View`
+position: absolute;
+top:6;
+left: 5px;
 
 `
