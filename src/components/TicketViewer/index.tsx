@@ -18,7 +18,11 @@ const TicketViewer = ({
   isUpdated = false,
 }: IssueMobileProps) => {
   return (
-    <TicketContainer isUpdated={isUpdated}>
+    <TicketContainer isUpdated={isUpdated}
+    onClick={() => {
+      window.location.href="/Chamado";
+      localStorage.setItem("idChamado", id);
+    }}>
       <TextualContent>
         <TicketTitle>Chamado N°{id}</TicketTitle>
         <TicketDescription ellipsizeMode="tail">
