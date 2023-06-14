@@ -50,7 +50,7 @@ export const ViewCallRequest: React.FC = () => {
     api
       .get(`/ConsultaChamadoId/${1}`, {
         headers: {
-          // Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjEwMTAxIiwiZW1haWwiOiJhbGlzc29uZ2FicmllbGFzc3VuY2FvQGdtYWlsLmNvbSIsIm5vbWUiOiJBbGlzc29uIEdhYnJpZWwiLCJuYmYiOjE2ODY0Mzc1ODIsImV4cCI6MTY4NjUyMzk4MiwiaWF0IjoxNjg2NDM3NTgyfQ.d1Eez3yHcf61sU2BvoLOqzHsl61-QJ63-wss_9O_DFU`,
+          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjEwMTAxIiwiZW1haWwiOiJhbGlzc29uZ2FicmllbGFzc3VuY2FvQGdtYWlsLmNvbSIsIm5vbWUiOiJBbGlzc29uIEdhYnJpZWwiLCJuYmYiOjE2ODY0Mzc1ODIsImV4cCI6MTY4NjUyMzk4MiwiaWF0IjoxNjg2NDM3NTgyfQ.d1Eez3yHcf61sU2BvoLOqzHsl61-QJ63-wss_9O_DFU`,
         },
       })
       .then((response) => setListaChamados(response.data))
