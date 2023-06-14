@@ -1,6 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import { BackButton } from "../../components";
 import {
+  ButtonText,
   ConfirmButton,
   FotterButtons,
   OpenCallContainer,
@@ -22,33 +23,33 @@ export const OpenCallRequest = () => {
   const [selectedDate, setSelectedDate] = useState("");
   const [loading, setIsLoading] = useState(false);
 
-  
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const numericValue = e.target.value.replace(/[^/0-9]/g, "");
     setSelectedDate(numericValue);
   };
 
   const navigation = useNavigation();
-  const CreateTicket = () => {
+
+  const createTicket = () => {
     setIsLoading(true);
 
-     const chamadoData = {
-       nome: resumo,
-       tipo: tipo,
-       dataRelato: selectedDate,
-       descricao: descricao,
-       empregado_Matricula: 77777,
-     };
+    const chamadoData = {
+      nome: resumo,
+      tipo: tipo,
+      dataRelato: selectedDate,
+      descricao: descricao,
+      empregado_Matricula: 77777,
+    };
 
     api
       .post("/CadastroChamado/", JSON.stringify(chamadoData), {
         headers: {
-          // Authorization: `Bearer ${usuarioLogado.token}`,
+          // Authorization: `Bearer `,
           "Content-Type": "application/json",
         },
       })
-      .then(() => {
-        navigation.goBack();
+      .then((response) => {
+        console.log(response);
       })
       .catch((err) => {
         console.error(`ops! ocorreu um erro ${err}`);
@@ -134,10 +135,10 @@ export const OpenCallRequest = () => {
             </Fieldset>
           </OpenCallContent>
           <FotterButtons>
-            <ConfirmButton onClick={() => CreateTicket()}>
-              Confirmar
+            <ConfirmButton onClick={createTicket}>
+              <ButtonText>Confirmar</ButtonText>
             </ConfirmButton>
-          </FotterButtons>{" "}
+          </FotterButtons>
         </>
       ) : (
         <Spinner visible={loading} size={"large"} color="red"></Spinner>

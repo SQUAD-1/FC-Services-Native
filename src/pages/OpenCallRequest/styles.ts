@@ -68,7 +68,7 @@ export const FotterButtons = styled.View`
   border-top-color: #cac4d0;
 `;
 
-export const ConfirmButton = styled.TouchableOpacity`
+export const ConfirmButton = styled.View`
   justify-self: flex-end;
   width: 101px;
   height: 40px;
@@ -76,6 +76,9 @@ export const ConfirmButton = styled.TouchableOpacity`
   border-radius: 100px;
   align-items: center;
   justify-content: center;
+`;
+
+export const ButtonText = styled.Text`
   letter-spacing: 0.1px;
   color: #ffffff;
   font-size: 14px;

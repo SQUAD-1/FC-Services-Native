@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BackButton, FildsetContainer } from "../../components";
+import { BackButton, Fieldset } from "../../components";
 import {
   Circle,
   CircleContainer,
@@ -20,7 +20,6 @@ import {
 } from "./styles";
 import { api } from "../../services";
 import Spinner from "../../components/loadingScreen";
-import { Fieldset } from "../../components/Fildset";
 
 export const ViewCallRequest: React.FC = () => {
   const [listaChamados, setListaChamados] = useState<ChamadoScreenProps[]>([]);
@@ -100,11 +99,11 @@ export const ViewCallRequest: React.FC = () => {
             </Fieldset>
           </PriorityDiv>
         </TypeAndPriorityDiv>
-        <FildsetContainer legend="Data do ocorrido">
+        <Fieldset legend="Data do ocorrido">
           <InfoDiv>
             <InfoText>{listaChamados[0]?.dataRelato}</InfoText>
           </InfoDiv>
-        </FildsetContainer>
+        </Fieldset>
       </InfoContainer>
 
       <Historic>Histórico</Historic>
