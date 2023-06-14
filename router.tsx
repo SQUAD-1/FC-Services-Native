@@ -10,7 +10,7 @@ export const Router = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="/"
+          name="Home"
           component={Home}
           options={{ headerShown: false }}
         />
