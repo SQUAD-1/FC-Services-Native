@@ -1,5 +1,6 @@
 import styled from "styled-components/native";
 
+
 export const LoginContainer = styled.View`
 height: 100vh;
 width: 100%;
@@ -58,6 +59,7 @@ export const TextLogin = styled.Text`
     background-color: rgb(229, 230, 230);
    /* margin-left: -50px; */
      align-items: center;
+     
 
    
     background-color: rgb(229, 230, 230);
@@ -68,10 +70,7 @@ export const TextLogin = styled.Text`
     font-weight: 400;
     outline: none;
     font-size: 15px;
-
-      &:focus{
-         border: none;
-      } 
+    border-radius: 4px;
   
  `
 
@@ -84,7 +83,7 @@ export const TextLogin = styled.Text`
     
  `
 
- export const Button = styled.TouchableOpacity`
+ export const Button = styled.TouchableOpacity<{isActive: boolean}>`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -93,8 +92,7 @@ export const TextLogin = styled.Text`
     width: 265px;
     gap: 8px;
     align-self: center;
-    background-color: rgb(222, 224, 221);
-    color: rgb(145, 151, 147);
+    color: ${({isActive})=> isActive ? "white" : " rgb(145, 151, 147)"}
  `
 
 
@@ -131,8 +129,14 @@ top:6;
 left: 5px;
 
 `
-export const EraseSpace = styled.View`
+export const EraseSpace = styled.TouchableOpacity`
  position: absolute;
  top: 6;
- right: 5 
+ right: 5;
 `
+export const EyeSpace = styled.TouchableOpacity`
+position: absolute;
+ bottom: 6;
+ right: 0;
+
+` 
