@@ -1,4 +1,4 @@
-import Router from "./router";
+import { Router } from "./router";
 import { ThemeProvider } from "styled-components/native";
 import { useFonts } from "expo-font";
 import React, { useEffect } from "react";

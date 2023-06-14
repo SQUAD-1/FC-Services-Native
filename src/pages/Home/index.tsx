@@ -18,7 +18,7 @@ import {
 } from "./styles";
 import { api } from "../../services";
 
-export const Home: React.FC = () => {
+export const Home = () => {
    interface HomeProps {
     idChamado: string;
     nome: string;

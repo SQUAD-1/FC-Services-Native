@@ -1,21 +1,20 @@
-/* eslint @typescript-eslint/prefer-nullish-coalescing: 0 */
-import * as React from 'react';
+import * as React from "react";
 import {
   View,
   Text,
   Modal,
   ActivityIndicator,
   TextStyle,
-  ViewStyle
-} from 'react-native';
-import styles from './styles';
+  ViewStyle,
+} from "react-native";
+import styles from "./styles";
 
 export interface SpinnerPropTypes {
   cancelable?: boolean;
   color?: string;
-  animation?: 'none' | 'slide' | 'fade';
+  animation?: "none" | "slide" | "fade";
   overlayColor?: string;
-  size?: 'small' | 'large' | number; // size props does not support value normal
+  size?: "small" | "large" | number; // size props does not support value normal
   textContent?: string;
   textStyle?: TextStyle;
   visible?: boolean;
@@ -27,17 +26,17 @@ export interface SpinnerPropTypes {
 
 export const Spinner = ({
   cancelable = false,
-  color = 'white',
-  animation = 'none',
-  overlayColor = 'rgba(0, 0, 0, 0.25)',
-  size = 'large',
-  textContent = '',
+  color = "white",
+  animation = "none",
+  overlayColor = "rgba(0, 0, 0, 0.25)",
+  size = "large",
+  textContent = "",
   textStyle,
   visible = false,
   indicatorStyle,
   customIndicator,
   children,
-  spinnerKey
+  spinnerKey,
 }: SpinnerPropTypes) => {
   const [spinnerVisible, setSpinnerVisibility] = React.useState(visible);
   const close = () => {
@@ -74,8 +73,7 @@ export const Spinner = ({
     const spinner = (
       <View
         style={[styles.container, { backgroundColor: overlayColor }]}
-        key={spinnerKey || `spinner_${Date.now()}`}
-      >
+        key={spinnerKey || `spinner_${Date.now()}`}>
         {children || _renderDefaultContent()}
       </View>
     );
@@ -86,11 +84,10 @@ export const Spinner = ({
         onRequestClose={() => {
           _handleOnRequestClose();
         }}
-        supportedOrientations={['landscape', 'portrait']}
+        supportedOrientations={["landscape", "portrait"]}
         transparent
         visible={spinnerVisible}
-        statusBarTranslucent={true}
-      >
+        statusBarTranslucent={true}>
         {spinner}
       </Modal>
     );
