@@ -8,6 +8,8 @@ align-items: center;
 padding: 20px;
 gap: 50px;
 justify-content: space-between;
+
+
 `
 
 export const Logo = styled.View`
@@ -55,8 +57,8 @@ export const TextLogin = styled.Text`
     display: flex;
     background-color: rgb(229, 230, 230);
    /* margin-left: -50px; */
+     align-items: center;
 
-    align-items: center;
    
     background-color: rgb(229, 230, 230);
     padding: 8px 48px;
@@ -66,7 +68,10 @@ export const TextLogin = styled.Text`
     font-weight: 400;
     outline: none;
     font-size: 15px;
- 
+
+      &:focus{
+         border: none;
+      } 
   
  `
 
@@ -125,4 +130,9 @@ position: absolute;
 top:6;
 left: 5px;
 
+`
+export const EraseSpace = styled.View`
+ position: absolute;
+ top: 6;
+ right: 5 
 `
