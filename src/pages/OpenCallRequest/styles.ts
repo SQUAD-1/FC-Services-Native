@@ -30,44 +30,54 @@ export const OpenCallInput = styled.TextInput<OpenCallInputProps>`
   border: none;
   height: ${({ height }) => height || "30px"};
   width: 100%;
+  justify-content: flex-start;
   font-size: 16px;
   color: #77757b;
 `;
 
 export const OpenCallPicker = StyleSheet.create<PickerStyle>({
   inputAndroid: {
+    fontFamily: "Roboto",
     height: "30px",
     backgroundColor: "#f8fcf6",
-    border: "none",
+    borderWidth: 0,
   },
   inputIOS: {
+    fontFamily: "Roboto",
     height: "30px",
     backgroundColor: "#f8fcf6",
-    border: "none",
+    borderWidth: 0,
   },
   inputWeb: {
+    fontFamily: "Roboto",
     height: "30px",
     backgroundColor: "#f8fcf6",
-    border: "none",
+    borderWidth: 0,
     marginRight: "8.25px",
   },
 });
 
-export const DatePickerStyle = StyleSheet.create({
-  datePicker: {
-    width: "100%",
-    height: "30px",
-    border: "none",
-  },
-  dateInput: {
-    border: "none",
-  },
-  dateText: {
-    fontSize: 18,
-    color: "red",
-  },
-  placeholderText: {
-    fontSize: 18,
-    color: "red",
-  },
-});
+export const FotterButtons = styled.View`
+  display: grid;
+  position: absolute;
+  padding: 26px 20px 16px 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  border-top-width: 1px;
+  border-top-color: #cac4d0;
+`;
+
+export const ConfirmButton = styled.TouchableOpacity`
+  justify-self: flex-end;
+  width: 101px;
+  height: 40px;
+  background: #7ac143;
+  border-radius: 100px;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.1px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+`;

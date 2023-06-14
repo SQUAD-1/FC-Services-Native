@@ -1,6 +1,8 @@
 import { useNavigation } from "@react-navigation/native";
 import { BackButton } from "../../components";
 import {
+  ConfirmButton,
+  FotterButtons,
   OpenCallContainer,
   OpenCallContent,
   OpenCallInput,
@@ -9,37 +11,56 @@ import {
 } from "./styles";
 import { Fieldset } from "../../components/Fildset";
 import Picker from "react-native-picker-select";
-import React, { ChangeEvent, ChangeEventHandler, useState } from "react";
+import React, { ChangeEvent, useState } from "react";
+import { api } from "../../services";
 
 export const OpenCallRequest = () => {
   const [tipo, setTipo] = useState("");
   const [resumo, setResumo] = useState("");
   const [descricao, setDescricao] = useState("");
   const [selectedDate, setSelectedDate] = useState("");
+  const [loading, setIsLoading] = useState(false);
+
+  
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const numericValue = e.target.value.replace(/[^/0-9]/g, "");
+    setSelectedDate(numericValue);
+  };
+  
+  const chamadoData = {
+    nome: resumo,
+    tipo: tipo,
+    dataRelato: selectedDate,
+    descricao: descricao,
+    empregado_Matricula: 77777,
+  };
+
   const navigation = useNavigation();
-
- const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-   const numericValue = e.target.value.replace(/[^0-9]/g, "");
-
-   let formattedValue = numericValue;
-   if (numericValue.length >= 2) {
-     formattedValue += numericValue.substring(0, 2) + "/";
-   }
-   if (numericValue.length >= 4) {
-     formattedValue += numericValue.substring(2, 4) + "/";
-   }
-   if (numericValue.length >= 6) {
-     formattedValue += numericValue.substring(4, 8);
-   }
-
-   setSelectedDate(numericValue);
- };
+  const CreateTicket = () => {
+    setIsLoading(true);
+    api
+      .post("/CadastroChamado/", JSON.stringify(chamadoData), {
+        headers: {
+          // Authorization: `Bearer ${usuarioLogado.token}`,
+          "Content-Type": "application/json",
+        },
+      })
+      .then(() => {
+        navigation.goBack();
+      })
+      .catch((err) => {
+        console.error(`ops! ocorreu um erro ${err}`);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
 
   return (
     <OpenCallContainer>
       <BackButton
         buttonText="voltar"
-        buttonClick={() => navigation.navigate("Chamado")}
+        buttonClick={() => useNavigation("Chamado")}
       />
       <OpenCallTitle>O que aconteceu?</OpenCallTitle>
       <OpenCallContent>
@@ -57,20 +78,40 @@ export const OpenCallRequest = () => {
             value={tipo}
             onValueChange={(value) => setTipo(value)}
             items={[
-              { label: "Selecione uma opção", value: "" },
-              { label: "Opção 1", value: "opcao1" },
-              { label: "Opção 2", value: "opcao2" },
-              { label: "Opção 3", value: "opcao3" },
+              {
+                label: "Falta de material",
+                value: "Falta de material",
+              },
+              {
+                label: "Problema com a internet",
+                value: "Problema com a internet",
+              },
+              {
+                label: "Solicitação de limpeza",
+                value: "Solicitação de limpeza",
+              },
+              {
+                label: "Solicitação de recurso",
+                value: "Solicitação de recurso",
+              },
+              {
+                label: "Objeto perdido",
+                value: "Objeto perdido",
+              },
+              {
+                label: "Outros",
+                value: "Outros",
+              },
             ]}
             style={OpenCallPicker}
           />
         </Fieldset>
         <Fieldset legend="Descrição">
           <OpenCallInput
-            height="46px"
+            height="240px"
             placeholder="Nos conte mais detalhes sobre o ocorrido..."
             value={descricao}
-            onValueChange={(e: ChangeEvent<HTMLInputElement>) =>
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
               setDescricao(e.target.value)
             }
           />
@@ -83,11 +124,14 @@ export const OpenCallRequest = () => {
             placeholder="dd/mm/aaaa"
             keyboardType="numeric"
             mask="dd/mm/aaaa"
-            maxLength="8"
+            maxLength="10"
             pattern="23/12/2022"
           />
         </Fieldset>
       </OpenCallContent>
+      <FotterButtons>
+        <ConfirmButton>Confirmar</ConfirmButton>
+      </FotterButtons>
     </OpenCallContainer>
   );
 };

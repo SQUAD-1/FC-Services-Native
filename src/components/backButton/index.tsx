@@ -3,7 +3,7 @@ import { Back, ContainerBackButton, TextIconWrapper } from "./styles";
 
 interface BackButtonProps {
   buttonText: string;
-  buttonClick: () => void;
+  buttonClick?: () => void;
 }
 
 export const BackButton = ({ buttonText, buttonClick }: BackButtonProps) => {
