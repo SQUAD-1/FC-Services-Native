@@ -55,7 +55,7 @@ const Home = () => {
           <HeaderContainer>
             <FCLogo source={require("../../assets/fc.svg")} />
             <LocationContainer>
-              <LocationText> FC Ibiribeira </LocationText>
+              <LocationText> FC Imbiribeira </LocationText>
               <LocationIcon source={require("../../assets/location.svg")} />
             </LocationContainer>
           </HeaderContainer>
@@ -81,7 +81,7 @@ const Home = () => {
               <Text>Carregando...</Text>
             )
           ) : (
-            <BoxEmpty title="Sem chamados no momento"/>
+            <BoxEmpty title="Sem chamados no momento" />
           )}
         </ContentContainer>
         <UserActionContainer>

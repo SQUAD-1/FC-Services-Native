@@ -9,7 +9,7 @@ export const RequestsEmpty = styled.View`
 	gap: .6rem;
 `;
 
-export const RequestsTitle = styled.View<BoxEmptyProps>`
+export const RequestsTitle = styled.Text<BoxEmptyProps>`
 	font-size: ${({ fontSize }) => fontSize ?? "24px"};
 	font-weight: 600;
 	line-height: 29px;

@@ -26,7 +26,6 @@ const HeaderContainer = styled.View`
 const FCLogo = styled.Image`
   height: 62px;
   width: 62px;
-  color: #E71C35;
 `
 const LocationContainer = styled.View`
   align-items: center;
