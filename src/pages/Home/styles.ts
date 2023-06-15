@@ -6,7 +6,7 @@ const FlexContainer = styled.View`
   justify-content: center;
   width: 100%;
   height: 100%;
-  padding: 4% 4% 0 4%;
+  padding: 8% 8% 0 8%;
 `;
 
 const UpperContainer = styled.View`
@@ -66,12 +66,17 @@ const SubHeader = styled.View`
   gap: 12px;
 `;
 
-const ContentContainer = styled.View`
+const ContentContainer = styled.View<{hasContent: boolean}>`
   flex: 1;
   width: 100%;
   gap: 12px;
   overflow: scroll;
   padding: 12px 0;
+  ${({ hasContent }) => !hasContent && `
+  align-items: center;
+  justify-content: center;
+  `}
+  
 `;
 
 const PageContainer = styled.View`
@@ -80,6 +85,15 @@ height: 100%;
 gap: 16px;
 overflow: visible;
 `
+
+const UserActionContainer = styled.View`
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 10%;
+  padding-bottom: 10vh;
+  `;
 
 export {
   FlexContainer,
@@ -93,5 +107,6 @@ export {
   PageTitle,
   SubHeader,
   ContentContainer,
-  PageContainer
+  PageContainer,
+  UserActionContainer
 }

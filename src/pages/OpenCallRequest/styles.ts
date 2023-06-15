@@ -1,3 +1,4 @@
+import { ChangeEvent } from "react";
 import { StyleSheet } from "react-native";
 import { PickerStyle } from "react-native-picker-select";
 import styled, { css } from "styled-components/native";

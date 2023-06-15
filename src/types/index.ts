@@ -2,6 +2,7 @@ import React from "react";
 
 type IssueMobileProps = {
 	id: string;
+	resume: string;
 	description: string;
 	date: string;
 	status: string;
@@ -11,6 +12,16 @@ type IssueMobileProps = {
 	isClicked?: boolean;
 	onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined;
 };
+
+
+type HomeProps = {
+	id: string;
+	resume: string;
+	date: string;
+	status: string;
+	link?: string;
+	isUpdated: boolean;
+}
 
 type IssueDto = {
 	idChamado: number;
@@ -73,4 +84,5 @@ export type {
 	IconButtonProps,
 	BoxEmptyProps,
 	IssueDto,
+	HomeProps
 };

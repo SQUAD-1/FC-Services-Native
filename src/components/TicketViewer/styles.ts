@@ -1,6 +1,6 @@
 import styled from "styled-components/native";
 
-const TicketContainer = styled.View<{isUpdated: boolean}>`
+const TicketContainer = styled.View<{isUpdated: boolean, onClick?: () => void}>`
 
   border-radius: 12px;
   background-color: #D9F5C5;
