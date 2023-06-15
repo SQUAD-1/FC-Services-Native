@@ -63,7 +63,7 @@ const Home = () => {
             </LocationContainer>
           </HeaderContainer>
           <SubHeader>
-            <Title>Bom dia, Wellington!</Title>
+            <Title>Bom dia, {usuarioLogado.nome}!</Title>
             <PageTitle>Chamados recentes</PageTitle>
           </SubHeader>
         </UpperContainer>
