@@ -33,18 +33,21 @@ export const OpenCallRequest = () => {
   const createTicket = () => {
     setIsLoading(true);
 
+    const usuarioLogado = JSON.parse(
+      localStorage.getItem("userData") ?? "null"
+    );
     const chamadoData = {
       nome: resumo,
       tipo: tipo,
       dataRelato: selectedDate,
       descricao: descricao,
-      empregado_Matricula: 77777,
+      empregado_Matricula: parseInt(usuarioLogado.matricula),
     };
 
     api
       .post("/CadastroChamado/", JSON.stringify(chamadoData), {
         headers: {
-          // Authorization: `Bearer `,
+          Authorization: `Bearer ${usuarioLogado.token}`,
           "Content-Type": "application/json",
         },
       })

@@ -26,14 +26,16 @@ const Home = () => {
   const [dataCall, setDataCall] = React.useState<HomeProps[]>([]);
   const [isLoading, setIsLoading] = React.useState(false);
   const [hasContent, setHasContent] = React.useState(false);
+  const usuarioLogado = JSON.parse(localStorage.getItem("userData") ?? "null");
 
   useEffect(() => {
     setIsLoading(true);
     setHasContent(false);
+
     api
-      .get(`/ConsultaChamado/11111`, {
+      .get(`/ConsultaChamado/${usuarioLogado.matricula}`, {
         headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjExMTExIiwiZW1haWwiOiJ0ZXN0ZTJAZ21haWwuY29tIiwibm9tZSI6IlRlc3RlIFdlbGwiLCJuYmYiOjE2ODY2OTAwMzcsImV4cCI6MTY4Njc3NjQzNywiaWF0IjoxNjg2NjkwMDM3fQ.rRndyRmTzWEt1K2lB0EMItAn2G3Yw9H-myP0PFAzknQ`,
+          Authorization: `Bearer ${usuarioLogado.token}`,
         },
       })
       .then((response) => {
@@ -47,7 +49,8 @@ const Home = () => {
       .finally(() => {
         setIsLoading(false);
       });
-  }, []);
+  }, [usuarioLogado.matricula, usuarioLogado.token]);
+
   return (
     <FlexContainer>
       <PageContainer>
@@ -69,10 +72,10 @@ const Home = () => {
             !isLoading ? (
               dataCall.map((item) => (
                 <TicketViewer
-                  key={item.id}
-                  id={item.id}
-                  resume={item.resume}
-                  date={item.date}
+                  key={item.idChamado}
+                  idChamado={item.idChamado}
+                  nome={item.nome}
+                  dataRelato={item.dataRelato}
                   status={item.status}
                   isUpdated={true}
                 />
@@ -81,7 +84,7 @@ const Home = () => {
               <Text>Carregando...</Text>
             )
           ) : (
-            <BoxEmpty title="Sem chamados no momento"/>
+            <BoxEmpty title="Sem chamados no momento" />
           )}
         </ContentContainer>
         <UserActionContainer>

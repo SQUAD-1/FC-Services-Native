@@ -15,9 +15,9 @@ type IssueMobileProps = {
 
 
 type HomeProps = {
-	id: string;
-	resume: string;
-	date: string;
+	idChamado: string;
+	nome: string;
+	dataRelato: string;
 	status: string;
 	link?: string;
 	isUpdated: boolean;
