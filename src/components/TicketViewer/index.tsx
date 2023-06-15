@@ -1,4 +1,4 @@
-import { IssueMobileProps } from "../../types";
+import { HomeProps, IssueMobileProps } from "../../types";
 import {
   TicketContainer,
   TextualContent,
@@ -12,11 +12,11 @@ import {
 
 const TicketViewer = ({
   id,
-  description,
+  resume,
   date,
   status,
   isUpdated = false,
-}: IssueMobileProps) => {
+}: HomeProps) => {
   return (
     <TicketContainer isUpdated={isUpdated}
     onClick={() => {
@@ -26,7 +26,7 @@ const TicketViewer = ({
       <TextualContent>
         <TicketTitle>Chamado N°{id}</TicketTitle>
         <TicketDescription ellipsizeMode="tail">
-          {description}
+          {resume}
         </TicketDescription>
       </TextualContent>
       <TicketInfo>
