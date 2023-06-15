@@ -5,7 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 const AddTicketButton = () => {
     const navigation = useNavigation();
   return (
-    <ButtonContainer onClick={() => navigation.navigate("" as never)}>
+    <ButtonContainer onClick={() => navigation.navigate("OpenCall" as never)}>
       <PlusIcon source={require("../../assets/plusIconWhite.png")} />
     </ButtonContainer>
   );

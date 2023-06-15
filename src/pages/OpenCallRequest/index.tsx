@@ -23,8 +23,8 @@ export const OpenCallRequest = () => {
   const [selectedDate, setSelectedDate] = useState("");
   const [loading, setIsLoading] = useState(false);
 
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const numericValue = e.target.value.replace(/[^/0-9]/g, "");
+  const handleInputChange = (e: React.SetStateAction<string>) => {
+    const numericValue = e.toString().replace(/[^/0-9]/g, "");
     setSelectedDate(numericValue);
   };
 
@@ -33,23 +33,27 @@ export const OpenCallRequest = () => {
   const createTicket = () => {
     setIsLoading(true);
 
+    const usuarioLogado = JSON.parse(
+      localStorage.getItem("userData") ?? "null"
+    );
     const chamadoData = {
       nome: resumo,
       tipo: tipo,
       dataRelato: selectedDate,
       descricao: descricao,
-      empregado_Matricula: 77777,
+      empregado_Matricula: parseInt(usuarioLogado.matricula),
     };
 
     api
       .post("/CadastroChamado/", JSON.stringify(chamadoData), {
         headers: {
-          // Authorization: `Bearer `,
+          Authorization: `Bearer ${usuarioLogado.token}`,
           "Content-Type": "application/json",
         },
       })
       .then((response) => {
         console.log(response);
+        navigation.navigate("Home" as never)
       })
       .catch((err) => {
         console.error(`ops! ocorreu um erro ${err}`);
@@ -65,16 +69,14 @@ export const OpenCallRequest = () => {
         <>
           <BackButton
             buttonText="voltar"
-            buttonClick={() => navigation.navigate("Chamado")}
+            buttonClick={() => navigation.navigate("Home" as never)}
           />
           <OpenCallTitle>O que aconteceu?</OpenCallTitle>
           <OpenCallContent>
             <Fieldset legend="Resumo">
               <OpenCallInput
                 value={resumo}
-                onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                  setResumo(e.target.value)
-                }
+                onChangeText={(e: React.SetStateAction<string>) => setResumo(e)}
                 placeholder="Do que se trata o chamado?"
               />
             </Fieldset>
@@ -116,26 +118,23 @@ export const OpenCallRequest = () => {
                 height="240px"
                 placeholder="Nos conte mais detalhes sobre o ocorrido..."
                 value={descricao}
-                onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                  setDescricao(e.target.value)
+                onChangeText={(e: React.SetStateAction<string>) =>
+                  setDescricao(e)
                 }
               />
             </Fieldset>
             <Fieldset legend="Data do ocorrido">
               <OpenCallInput
-                type="date"
                 value={selectedDate}
-                onChange={handleInputChange}
+                onChangeText={handleInputChange}
                 placeholder="dd/mm/aaaa"
                 keyboardType="numeric"
-                mask="dd/mm/aaaa"
-                maxLength="10"
-                pattern="23/12/2022"
+                maxLength={10}
               />
             </Fieldset>
           </OpenCallContent>
           <FotterButtons>
-            <ConfirmButton onClick={createTicket}>
+            <ConfirmButton onPress={createTicket}>
               <ButtonText>Confirmar</ButtonText>
             </ConfirmButton>
           </FotterButtons>

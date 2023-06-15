@@ -69,7 +69,7 @@ export const FotterButtons = styled.View`
   border-top-color: #cac4d0;
 `;
 
-export const ConfirmButton = styled.View`
+export const ConfirmButton = styled.TouchableOpacity`
   justify-self: flex-end;
   width: 101px;
   height: 40px;

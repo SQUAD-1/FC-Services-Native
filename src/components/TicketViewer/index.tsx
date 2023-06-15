@@ -11,28 +11,27 @@ import {
 } from "./styles";
 
 const TicketViewer = ({
-  id,
-  resume,
-  date,
+  idChamado,
+  nome,
+  dataRelato,
   status,
   isUpdated = false,
 }: HomeProps) => {
   return (
-    <TicketContainer isUpdated={isUpdated}
-    onClick={() => {
-      window.location.href="/Chamado";
-      localStorage.setItem("idChamado", id);
-    }}>
+    <TicketContainer
+      isUpdated={isUpdated}
+      onClick={() => {
+        window.location.href = "/Chamado";
+        localStorage.setItem("idChamado", idChamado);
+      }}>
       <TextualContent>
-        <TicketTitle>Chamado N°{id}</TicketTitle>
-        <TicketDescription ellipsizeMode="tail">
-          {resume}
-        </TicketDescription>
+        <TicketTitle>Chamado N°{idChamado}</TicketTitle>
+        <TicketDescription ellipsizeMode="tail">{nome}</TicketDescription>
       </TextualContent>
       <TicketInfo>
         <InfoContainer>
           <Label>Aberto em</Label>
-          <Info weight="500">{date}</Info>
+          <Info weight="500">{dataRelato}</Info>
         </InfoContainer>
         <InfoContainer>
           <Label>Status</Label>
