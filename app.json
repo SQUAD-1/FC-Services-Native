@@ -1,6 +1,9 @@
 {
   "expo": {
     "name": "FC-Services-Native",
+    "description": "FC Services é uma aplicação para facilitar a vida dos funcionarios da Ferreira Costa, com ele é possível solicitar serviços de forma rápida e fácil.",
+    "owner": "SQUAD 1",
+    "privacy": "public",
     "slug": "FC-Services-Native",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -13,11 +16,10 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": false
+      "supportsTablet": false,
+      "jsEngine": "jsc"
     },
     "android": {
       "adaptiveIcon": {
@@ -30,6 +32,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "githubUrl": "https://github.com/SQUAD-1/FC-Services-Native",
+    "jsEngine": "hermes"
   }
 }
