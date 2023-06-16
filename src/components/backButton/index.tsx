@@ -1,4 +1,4 @@
-import { BackButtonIcon } from "../../assets/backButtonIcon";
+import { Image, View } from "react-native";
 import { Back, ContainerBackButton, TextIconWrapper } from "./styles";
 
 interface BackButtonProps {
@@ -10,7 +10,9 @@ export const BackButton = ({ buttonText, buttonClick }: BackButtonProps) => {
   return (
     <ContainerBackButton>
       <TextIconWrapper onPress={buttonClick}>
-        <BackButtonIcon /> <Back>{buttonText}</Back>
+        <View>
+          <Image source={require("../../assets/backButtonIcon.png")} /> <Back>{buttonText}</Back>
+        </View>
       </TextIconWrapper>
     </ContainerBackButton>
   );

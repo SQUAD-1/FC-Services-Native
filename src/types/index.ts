@@ -76,6 +76,12 @@ type BoxEmptyProps = {
 	fontSize?: string;
 };
 
+type localStorageProps = {
+	matricula: string;
+	token: string;
+	nome: string
+  }
+
 export type {
 	IssueMobileProps,
 	IconsProps,
@@ -84,5 +90,6 @@ export type {
 	IconButtonProps,
 	BoxEmptyProps,
 	IssueDto,
-	HomeProps
+	HomeProps,
+	localStorageProps
 };

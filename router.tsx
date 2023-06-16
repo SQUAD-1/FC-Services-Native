@@ -3,18 +3,18 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { ViewCallRequest } from "./src/pages/ViewCallRequest";
 import { OpenCallRequest } from "./src/pages/OpenCallRequest";
 import { Home } from "./src/pages/Home";
-import { LoginScreen } from "./src/pages/Login";
+// import { LoginScreen } from "./src/pages/Login";
 
 export const Router = () => {
   const Stack = createNativeStackNavigator();
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen
+        {/* <Stack.Screen
           name="Login"
           component={LoginScreen}
           options={{ headerShown: false }}
-        />
+        /> */}
         <Stack.Screen
           name="Home"
           component={Home}

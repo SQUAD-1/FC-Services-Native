@@ -4,7 +4,7 @@ export const FieldsetContainer = styled.View`
 border: 1px solid #5A8F19;
 border-radius: 4px;
 padding: 8px 0px 8px 16px;
-width:100%;
+width: 100%;
 white-space: nowrap;
 display: grid;
 align-self: center;

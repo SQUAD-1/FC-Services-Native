@@ -8,7 +8,6 @@ const styles = StyleSheet.create({
   background: {
     alignItems: 'center',
     bottom: 0,
-    justifyContent: 'center',
     left: 0,
     position: 'absolute',
     right: 0,
@@ -27,7 +26,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     bottom: 0,
     flex: 1,
-    justifyContent: 'center',
     left: 0,
     position: 'absolute',
     right: 0,

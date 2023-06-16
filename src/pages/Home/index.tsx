@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Text } from "react-native";
 import { TicketViewer } from "../../components";
-import { searchResults } from "../../data";
 import {
   ContentContainer,
   FCLogo,
@@ -18,24 +17,46 @@ import {
   UserActionContainer,
 } from "./styles";
 import { api } from "../../services";
-import { HomeProps } from "../../types";
+import { HomeProps, localStorageProps } from "../../types";
 import AddTicketButton from "../../components/AddTicketButton";
 import { BoxEmpty } from "../../components/BoxEmpty";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Home = () => {
   const [dataCall, setDataCall] = React.useState<HomeProps[]>([]);
   const [isLoading, setIsLoading] = React.useState(false);
   const [hasContent, setHasContent] = React.useState(false);
-  const usuarioLogado = JSON.parse(localStorage.getItem("userData") ?? "null");
+  // const [dados, setDados] = useState<localStorageProps>();
+
+  // useEffect(() => {
+  //   const obterLocalStorage = async () => {
+  //     try {
+  //       const valorArmazenado = await AsyncStorage.getItem("userData");
+  //       if (valorArmazenado !== null) {
+  //         const dadosDesserializados = JSON.parse(valorArmazenado);
+  //         setDados(dadosDesserializados as localStorageProps);
+  //       }
+  //     } catch (error) {
+  //       console.log("Erro ao obter os dados do localStorage:", error);
+  //     }
+  //   };
+  //   obterLocalStorage();
+  // }, []);
+
+  const dados: localStorageProps = {
+    matricula: "11111",
+    nome: "Teste Well",
+    token:
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjExMTExIiwiZW1haWwiOiJ0ZXN0ZTJAZ21haWwuY29tIiwibm9tZSI6IlRlc3RlIFdlbGwiLCJuYmYiOjE2ODY4NzgxMzksImV4cCI6MTY4Njk2NDUzOSwiaWF0IjoxNjg2ODc4MTM5fQ.mB1MqCKU4aqlZdsuKD3h8VpYWDSGvv9nHEh7XQCY0nc",
+  };
 
   useEffect(() => {
     setIsLoading(true);
     setHasContent(false);
-
     api
-      .get(`/ConsultaChamado/${usuarioLogado.matricula}`, {
+      .get(`/ConsultaChamado/${dados?.matricula}`, {
         headers: {
-          Authorization: `Bearer ${usuarioLogado.token}`,
+          Authorization: `Bearer ${dados?.token}`,
         },
       })
       .then((response) => {
@@ -49,7 +70,7 @@ const Home = () => {
       .finally(() => {
         setIsLoading(false);
       });
-  }, [usuarioLogado.matricula, usuarioLogado.token]);
+  }, [dados?.matricula, dados?.token]);
 
   return (
     <FlexContainer>
@@ -63,7 +84,7 @@ const Home = () => {
             </LocationContainer>
           </HeaderContainer>
           <SubHeader>
-            <Title>Bom dia, {usuarioLogado.nome}!</Title>
+            <Title>Bom dia, {dados?.nome}!</Title>
             <PageTitle>Chamados recentes</PageTitle>
           </SubHeader>
         </UpperContainer>
